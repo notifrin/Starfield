@@ -1,4 +1,3 @@
-
 Particle[] particle=new Particle[750];
 void setup(){
   size(500,500);
@@ -29,23 +28,27 @@ class Particle{
   void show(){
     noStroke();
     fill(myColor);
-star((float)myX,(float)myY,(float)((Math.random()*10)+4),(float)((Math.random()*10)+4), (float)((Math.random()*10)+4));
-
+  star((float)myX,(float)myY,(float)((Math.random()*10)+4),(float)((Math.random()*10)+4), (float)((Math.random()*10)+4));
   }
 }
 class OddballParticle extends Particle{
   OddballParticle(){
     myX=myY=235;
-    myColor=color(0,0,0);
+   myAngle=Math.random()*2*Math.PI;
+    mySpeed=Math.random()*10;
+    myColor=color(0,255,0);
   }
   void move(){
-    myX+=(int)(Math.random()*10)-100;
-    myY+=(int)(Math.random()*10)-100;
+    myX+=(int)(Math.random()*3)-1;
+    myY+=(int)(Math.random()*3)-1;
   }
-
+  void show(){
+    noStroke();
+    fill(255);
+    rect((float)myX,(float)myY,(float)100,(float)100, (float) 100);
+  }
 }
- 
-   void star(float x, float y, float radius1, float radius2, float npoints) {
+void star(float x, float y, float radius1, float radius2, float npoints) {
   float angle = TWO_PI / npoints;
   float halfAngle = angle/2.0;
   beginShape();
@@ -58,4 +61,4 @@ class OddballParticle extends Particle{
     vertex(sx, sy);
   }
   endShape(CLOSE);
-  }
+}
